@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class Slow : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        Destroy(gameObject, 0.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Character character = other.gameObject.GetComponent<Character>();
+
+        if (character == null) return;
+        character.SlowEffect();
     }
 }
